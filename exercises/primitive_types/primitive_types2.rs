@@ -18,12 +18,12 @@ fn main() {
     }
 
     // Finish this line like the example! What's your favorite character?
-    let your_character: char = 'a'; // alpha
-    let your_character: char = '1'; // an number
-    let your_character: char = '#'; // an symbol
+    let your_character: char = 'a'; // an alpha
+    let your_character: char = '1'; // a number
+    let your_character: char = '#'; // a symbol
     let your_character: char = '\u{001b}'; // an escape char
-    let your_character: char = '字'; // an Chinese character
-    let your_character: char = 'ア'; // an Japanese character
+    let your_character: char = '字'; // a Chinese character
+    let your_character: char = 'ア'; // a Japanese character
 
     // Try a letter, try a number, try a special character, try a character
     // from a different language than your own, try an emoji!
