@@ -40,10 +40,46 @@ impl Default for Person {
 // If while parsing the age, something goes wrong, then return the default of
 // Person Otherwise, then return an instantiated Person object with the results
 
-// I AM NOT DONE
-
 impl From<&str> for Person {
     fn from(s: &str) -> Person {
+        // Avoid using collect() to avoid unnecessary allocations
+        let mut it = s.split(',');
+
+        if let Some(name) = it.next().filter(|n| !n.is_empty()) {
+            if let Some(age) = it.next() {
+                if let Ok(age) = age.trim().parse::<usize>() {
+                    return Person {
+                        name: name.to_string(),
+                        age,
+                    };
+                }
+            }
+        }
+
+        Person::default()
+
+        // A common way with worse performance
+        // let splited: Vec<&str> = s.split(',').collect();
+
+        // if splited.len() < 2 {
+        //     return Person::default();
+        // }
+
+        // let age = match splited[1].trim().parse::<usize>() {
+        //     Ok(age) => age,
+        //     Err(_) => return Person::default(),
+        // };
+
+        // let name = splited[0].to_string();
+
+        // if name.is_empty() {
+        //     return Person::default();
+        // }
+
+        // Person {
+        //     name,
+        //     age,
+        // }
     }
 }
 
